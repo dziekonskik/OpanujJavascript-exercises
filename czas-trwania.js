@@ -394,44 +394,39 @@ const lessons = [
     const sum = totalSeconds.reduce((acc, currVal) => acc + currVal)
     return `${parseInt(100 * secondsOfTeacher / sum)}%`
   }
+
+  function convertLengthToSeconds(data) {
+    const total = data.length.split(':').map((el, index) => {       
+      return index % 2 ? el*1 : el*60
+    })
+    const seconds = total.reduce((acc, currVal) => {
+      return acc + currVal
+    })
+    return seconds
+  }
   
   function totalDuration() {
     let sumaAdama = 0;
     let sumaPrzemka = 0;
     let sumaMarcina = 0
   
-    lessons.forEach(object => {
-      const modulAdama = Object.values(object)[0] <= 23;
-      const modulPrzemka = Object.values(object)[0] > modulAdama && Object.values(object)[0] < 47
-      const modulMarcina = Object.values(object)[0] > modulPrzemka
+    lessons.forEach( lesson => {
+      const modulAdama = Object.values(lesson)[0] <= 23;
+      const modulPrzemka = Object.values(lesson)[0] > modulAdama && Object.values(lesson)[0] < 47
+      const modulMarcina = Object.values(lesson)[0] > modulPrzemka
       
       if (modulAdama) {
-        const total = object.length.split(':').map((el, index) => {       
-          return index % 2 ? el*1 : el*60
-        })
-        const seconds = total.reduce((acc, currVal) => {
-          return acc + currVal
-        })
-        sumaAdama += seconds
+        const secOfAdam = convertLengthToSeconds(lesson)
+        sumaAdama += secOfAdam
       }
   
       else if (modulPrzemka) { 
-        const total = object.length.split(':').map((el, index) => {       
-          return index % 2 ? el*1 : el*60
-        })
-        const seconds = total.reduce((acc, currVal) => {
-          return acc + currVal
-        })
-        sumaPrzemka += seconds    
+        const secOfPrzemek = convertLengthToSeconds(lesson)
+        sumaPrzemka += secOfPrzemek    
       }
       else if (modulMarcina) { 
-        const total = object.length.split(':').map((el, index) => {       
-          return index % 2 ? el*1 : el*60
-        })
-        const seconds = total.reduce((acc, currVal) => {
-          return acc + currVal
-        })
-        sumaMarcina += seconds      
+        const secOfMarcin = convertLengthToSeconds(lesson)
+        sumaMarcina += secOfMarcin      
       }
     })
   
