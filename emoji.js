@@ -25,7 +25,8 @@ const emojiMappings = {
   };
   
   function useEmoji(input) {
-    const mapped = input.split(' ').map(word => {
+    const output = input
+    const mapped = output.split(' ').map(word => {
       for ([key, value] of Object.entries(emojiMappings)) {
         if (word === key) {
           const newSentence = input.replace(new RegExp(word, "g"), value);
