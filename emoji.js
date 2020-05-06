@@ -29,8 +29,7 @@ const emojiMappings = {
     const mapped = output.split(' ').map(word => {
       for ([key, value] of Object.entries(emojiMappings)) {
         if (word === key) {
-          const newSentence = input.replace(new RegExp(word, "g"), value);
-          return newSentence
+          return output.replace(new RegExp(word, "g"), value);         
         }
       } 
     })
