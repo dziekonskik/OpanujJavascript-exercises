@@ -26,14 +26,13 @@ const emojiMappings = {
   
   function useEmoji(input) {
     const output = input
-    const mapped = output.split(' ').map(word => {
+    return output.split(' ').map(word => {
       for ([key, value] of Object.entries(emojiMappings)) {
         if (word === key) {
           return output.replace(new RegExp(word, "g"), value);         
         }
       } 
-    })
-    return mapped.join('')
+    }).join('')
   }
   
   /* Weryfikacja */
