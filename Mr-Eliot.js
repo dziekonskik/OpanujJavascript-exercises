@@ -28,7 +28,7 @@ const charMappings = {
 function greeting(message) {
   const working = message
   let charsToNumbersResult = [];
-  [...working].map((char, index, arr) => {
+  [...working].forEach((char, index, arr) => {
       for ([key, val] of Object.entries(charMappings)) {
         if (char.toLowerCase() === key) arr.splice(index, 1, val)
       }
