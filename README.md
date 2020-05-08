@@ -4,6 +4,6 @@
 
 All solutions were written by me - Konrad Dziekoński
 
-Reqrements are included in polish language, english translations available upon request.
+Requirements are included in polish language, english translations available upon request.
 
 Best Regards

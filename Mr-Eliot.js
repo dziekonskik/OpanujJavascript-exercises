@@ -27,8 +27,8 @@ const charMappings = {
 // return index % 2 ? char.toLowerCase() : char.toUpperCase()
 function greeting(message) {
   const working = message
-  let charsToNumbersResult = []
-  working.split('').map((char, index, arr) => {
+  let charsToNumbersResult = [];
+  [...working].map((char, index, arr) => {
       for ([key, val] of Object.entries(charMappings)) {
         if (char.toLowerCase() === key) arr.splice(index, 1, val)
       }
