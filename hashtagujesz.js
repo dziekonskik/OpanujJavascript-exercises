@@ -17,21 +17,11 @@
 * findTags('Lubię tagować #yolo #love#happy #h3cker'); // => yolo, love, happy, h3cker
 * 
 */
-//.match(regex).join('')
+
 function findTags(message) {
-    const hash = message;
-    const result = []
-    const regex = /[A-Z0-9]/gi
-    let a;
-    hash.split(' ').forEach(word => {
-      if (word.startsWith('#')) {
-        a = word.replace(new RegExp('#', 'g'), ' ')
-        a
-      }
-     if (a !== undefined) return a
-    })
-    console.log(a)
-  }
+  let hash = message;
+  return hash.match(/(?<=#)\w+/g)
+}
   
   /* Weryfikacja */
   
