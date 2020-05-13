@@ -30,7 +30,7 @@ function countWords(sentence) {
     let working = sentence
     let counter = 0;
     working = working.replace(',', '').toLowerCase().split(' ');
-    let arrays = working.map(word => {
+    const arrays = working.map(word => {
       return [word, counter]
     })
     working.forEach(word => {
