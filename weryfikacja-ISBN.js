@@ -29,10 +29,14 @@
 
 function checkISBN(isbn) {
     let isISBN = isbn.replace(/-/g, '').split('')
+    if (isISBN[0] === 'X' || isISBN[0] === 'x') isISBN[0] = 10
+
     isISBN = isISBN.map((digit, index, arr) => {
       return index === 0 ? digit*arr.length : digit*(arr.length-index)
     })
+
     isISBN = isISBN.reduce((acc, current) => acc + current)
+    
     if (isISBN%11 === 0) {return true} 
     else {return false}
   }
