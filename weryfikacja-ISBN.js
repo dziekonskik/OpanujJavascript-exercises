@@ -37,10 +37,8 @@ function checkISBN(isbn) {
 
     isISBN = isISBN.reduce((acc, current) => acc + current)
     
-    if (isISBN%11 === 0) {return true} 
-    else {return false}
+    return isISBN%11 === 0
   }
-  //return isISBN%11 === 0 ? true: false
   
   /* Weryfikacja */
   
