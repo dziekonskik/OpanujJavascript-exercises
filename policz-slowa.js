@@ -27,20 +27,14 @@
 */
 
 function countWords(sentence) {
-    let working = sentence
-    let counter = 0;
-    working = working.replace(',', '').toLowerCase().split(' ');
-    const arrays = working.map(word => {
-      return [word, counter]
-    })
-    working.forEach(word => {
-      arrays.forEach(array => {
-        if (word === array[0]) array[1]++
-      })
-      return arrays
-    })
-    return Object.fromEntries(arrays)
-  }
+  let wordsInSentence = sentence
+  let result = {}
+  wordsInSentence = wordsInSentence.replace(',', '').toLowerCase().split(' ');
+  wordsInSentence.forEach(word => {
+    !result.hasOwnProperty(word) ? result[word] = 1 : result[word] += 1
+  })
+  return result
+}
   
   /* Weryfikacja */
   
