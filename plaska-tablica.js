@@ -11,14 +11,13 @@
 */
 
 function flattenArray(deepArray) {
-    const toFlatten = deepArray.flat()
-    const numbersOnly = []
-    toFlatten.forEach(el => {
-      if (el !== null && el !== undefined) numbersOnly.push(el)
-    })
-    const noDuplicates = new Set(numbersOnly)
-    return Array.from(noDuplicates)
-  }
+  const toFlatten = deepArray.flat()
+  const numbersOnly = toFlatten.filter(el => {
+    if (el !== null && el !== undefined) return el
+  })
+  const noDuplicates = new Set(numbersOnly)
+  return Array.from(noDuplicates)
+}
   
   
   /* Weryfikacja */
