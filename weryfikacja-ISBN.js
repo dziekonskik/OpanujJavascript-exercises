@@ -27,18 +27,16 @@
 *
 */
 
+function calculateLuhnWages(digit, index, arr) {
+  if (arr[arr.length-1] === 'X' || arr[arr.length-1] === 'x') arr[arr.length-1] = 10
+  return digit*(arr.length-index)
+}
+
 function checkISBN(isbn) {
-    let isISBN = isbn.replace(/-/g, '').split('')
-    if (isISBN[0] === 'X' || isISBN[0] === 'x') isISBN[0] = 10
-
-    isISBN = isISBN.map((digit, index, arr) => {
-      return index === 0 ? digit*arr.length : digit*(arr.length-index)
-    })
-
-    isISBN = isISBN.reduce((acc, current) => acc + current)
-    
-    return isISBN%11 === 0
-  }
+  let isISBN = isbn.replace(/-/g, '').split('')
+  isISBN = isISBN.map(calculateLuhnWages).reduce((acc, current) => acc + current)
+  return isISBN%11 === 0
+}
   
   /* Weryfikacja */
   

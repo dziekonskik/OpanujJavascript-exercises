@@ -18,6 +18,7 @@ function flattenArray(deepArray) {
   const noDuplicates = new Set(numbersOnly)
   return Array.from(noDuplicates)
 }
+
   
   
   /* Weryfikacja */
