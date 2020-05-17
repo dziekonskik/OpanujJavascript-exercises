@@ -22,12 +22,14 @@
 */
 
 function convertAstToHtmlString(astObject) {
-    const destructured = astObject
-    const {tagName, attributes, children} = destructured;
-    const {name: classAtr, value: classAttrValue} = attributes[0]
-    const {value: innerText} = children[0]
-    return `<${tagName} ${classAtr}="${classAttrValue}">${innerText}</${tagName}>`
-  }
+  const destructured = JSON.parse(JSON.stringify(astObject))
+  const {tagName, attributes, children} = destructured;
+  const atribute = attributes.map(({name, value}) => {
+    return `${name}="${value}"`
+  })
+  const innerText = children.map(({nodeType, value}) => nodeType === 'text' ? value : 'Incorrect Input')
+  return `<${tagName} ${atribute}>${innerText}</${tagName}>`
+}
   
   
   
