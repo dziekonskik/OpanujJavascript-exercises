@@ -22,3 +22,5 @@ input.addEventListener('keyup', () => {
   const reversed = [...input.value].reverse().join('');
   mirror.innerHTML = reversed;
 });
+
+
