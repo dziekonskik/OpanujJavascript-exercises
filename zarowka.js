@@ -16,6 +16,8 @@
 
 // Pamiętaj, że przełącznik to nie tylko włączanie, ale też wyłączanie światła.
 
+//https://stackblitz.com/edit/zarowka-2wcrq6?file=index.js  !!!!!
+
 const swicz = document.querySelector('#light-toggle');
 
 swicz.addEventListener('change', (e) => {

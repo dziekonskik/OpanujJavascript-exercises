@@ -15,6 +15,8 @@
 // Dostęp do pola tekstowego uzyskasz poprzez klasę `.text-input`.
 // Dostęp do lustra uzyskasz poprzez klasę `.mirror`.
 
+//https://stackblitz.com/edit/lustro-fj5qzu?file=index.js  !!!!!
+
 const input = document.querySelector('.text-input');
 
 input.addEventListener('keyup', () => {
@@ -22,5 +24,3 @@ input.addEventListener('keyup', () => {
   const reversed = [...input.value].reverse().join('');
   mirror.innerHTML = reversed;
 });
-
-
