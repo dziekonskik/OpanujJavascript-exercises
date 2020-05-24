@@ -46,8 +46,7 @@ function inputHandler(e) {
   const dataValue = e.target.dataset.value;
   if (dataValue !== '99' && dataValue !== '-99') {
     passwordBearer += `${dataValue}`;
-  }
-  if (dataValue === '99') {
+  } else if (dataValue === '99') {
     localStorage.setItem('secret-code', `${passwordBearer}`);
     display.textContent = `${localStorage.getItem('secret-code')}`;
   } else if (dataValue === '-99') {
