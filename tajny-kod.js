@@ -35,7 +35,7 @@ Wskazówki:
 * Wartość przycisku pobierz z atrybutu `data-value` - na podstawie wartości powinieneś zdecydować
  czy pracujesz z przyciskiem numerycznym, czy przyciskiem funkcyjnym
 
- https://stackblitz.com/edit/tajny-kod-5dme2k?file=index.js  !!!!!git add .
+ https://stackblitz.com/edit/tajny-kod-5dme2k?file=index.js  !!!!!
 
 */
 let display = document.querySelector('.display');
