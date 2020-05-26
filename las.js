@@ -24,7 +24,7 @@ Spraw, żeby na skutek ruchu kursorem nad lasem:
 1. Być może po odkryciu skarbu użytkownik mógłby usłyszeć wybrany przez ciebie podkład dźwiękowy?
  Zweryfikuj możliwości biblioteki [Howler](https://howlerjs.com/)
 
- https://stackblitz.com/edit/las-daj5py?file=index.js !!!!!!
+ https://stackblitz.com/edit/las-daj5py?file=index.js !!!!!!   <<=== Live Preview
 
 */
 // import { Howl, Howler } from 'howler';

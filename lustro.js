@@ -15,7 +15,7 @@
 // Dostęp do pola tekstowego uzyskasz poprzez klasę `.text-input`.
 // Dostęp do lustra uzyskasz poprzez klasę `.mirror`.
 
-//https://stackblitz.com/edit/lustro-fj5qzu?file=index.js  !!!!!
+//https://stackblitz.com/edit/lustro-fj5qzu?file=index.js  !!!!!  <<=== Live Preview
 
 const input = document.querySelector('.text-input');
 

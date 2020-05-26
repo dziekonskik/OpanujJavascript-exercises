@@ -19,7 +19,7 @@ Spraw, aby pole nad windą, informujące o kierunku poruszania się, było aktua
 
 1. Spraw, aby na polu z informacjami pokazywało się również aktualne piętro
 
-https://stackblitz.com/edit/winda-2nrfyu?file=index.js !!!!!!
+https://stackblitz.com/edit/winda-2nrfyu?file=index.js !!!!!! <<=== Live Preview
 */
 
 const directions = {

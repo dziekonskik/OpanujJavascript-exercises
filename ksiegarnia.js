@@ -28,7 +28,7 @@ API którego możesz używać znajduje się pod adresem
 https://www.goodreads.com/book/auto_complete?format=json&q=harry%20potter`, 
 gdzie `q` to parametr z nazwą książki.
 
-https://stackblitz.com/edit/ksiegarnia-ydthre?file=index.js  !!!!!
+https://stackblitz.com/edit/ksiegarnia-ydthre?file=index.js  !!!!!   <<=== Live Preview
 */
 const searchInput = document.querySelector('.form__input');
 const submitButton = document.querySelector('#form__button');

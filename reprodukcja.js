@@ -23,7 +23,7 @@ Pamiętaj - to nauka, więc unikaj drogi na skróty:
 * nie kopiuj oryginału i nie wklejaj go w miejscep płótna ;)
 */
 
-//https://stackblitz.com/edit/reprodukcja-tp6off?file=index.js   !!!!!
+//https://stackblitz.com/edit/reprodukcja-tp6off?file=index.js   !!!!!  <<=== Live Preview
 
 const PIXEL_COLOR = '#e44d4d';
 
