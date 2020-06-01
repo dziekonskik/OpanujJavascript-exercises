@@ -30,10 +30,10 @@ const sortButton =
   table.previousElementSibling.firstElementChild.lastElementChild;
 //const sortButton = document.querySelector('.hover:text-orange-600') - czemu tak wywala błąd uncaught DOM exeption ?;
 
-function calculateTime(miliSeconds) {
-  const hours = parseInt(miliSeconds / 3600);
-  const minutes = parseInt((miliSeconds - hours * 3600) / 60);
-  const seconds = miliSeconds - hours * 3600 - 60 * minutes;
+function calculateTime(totalSeconds) {
+  const hours = parseInt(totalSeconds / 3600);
+  const minutes = parseInt((totalSeconds - hours * 3600) / 60);
+  const seconds = totalSeconds - hours * 3600 - 60 * minutes;
   return [hours, minutes, seconds];
 }
 
