@@ -42,20 +42,34 @@ let display = document.querySelector('.display');
 const keybord = document.querySelectorAll('.keyboard__button');
 let passwordBearer = '';
 
+function storeCode() {
+  passwordBearer += `${dataValue}`;
+}
+
+function saveCode() {
+  localStorage.setItem('secret-code', `${passwordBearer}`);
+  display.textContent = `${localStorage.getItem('secret-code')}`;
+}
+
+function clearMemory() {
+  localStorage.clear();
+  display.textContent = '';
+  passwordBearer = '';
+}
+
 function inputHandler(e) {
   const dataValue = e.target.dataset.value;
   if (dataValue !== '99' && dataValue !== '-99') {
-    passwordBearer += `${dataValue}`;
-  } else if (dataValue === '99') {
-    localStorage.setItem('secret-code', `${passwordBearer}`);
-    display.textContent = `${localStorage.getItem('secret-code')}`;
-  } else if (dataValue === '-99') {
-    localStorage.clear();
-    display.textContent = '';
-    passwordBearer = '';
+    storeCode();
+  }
+  if (dataValue === '99') {
+    saveCode();
+  }
+  if (dataValue === '-99') {
+    clearMemory();
   }
 }
-display.textContent = `${localStorage.getItem('secret-code')}`;
+
 keybord.forEach((key) => {
   key.addEventListener('click', inputHandler);
 });
