@@ -45,7 +45,7 @@ const numericPageButtons = pages.filter((page) => {
 allContacts.forEach((person, index) => {
   if (index > 1) {
     person.remove();
-    prevButton.style.display = 'none';
+    hideButton(prevButton);
   }
 });
 
@@ -63,34 +63,33 @@ function calculatePageContent(currentPage) {
   return [currentPage * namesPerPage - 1, currentPage * namesPerPage - 2];
 }
 
-function hidePreviousBtn() {
-  prevButton.style.display = 'none';
+function hideButton(button) {
+  button.classList.add('disabled');
 }
 
-function showPreviousBtn() {
-  prevButton.style.display = 'flex';
-}
-
-function hideNextBtn() {
-  nextButton.style.display = 'none';
-}
-
-function showNextBtn() {
-  nextButton.style.display = 'flex';
+function showButton(button) {
+  button.classList.remove('disabled');
 }
 
 function prevNextBtnToggle(currentPage) {
-  if (currentPage === 1) hidePreviousBtn();
-  if (currentPage > 1) showPreviousBtn();
-  if (currentPage === numericPageButtons.length) hideNextBtn();
-  if (currentPage < numericPageButtons.length) showNextBtn();
+  const isOnPageOne = currentPage === 1;
+  const isNoLongerOnPageOne = currentPage > 1;
+  const isOnTheLastPage = currentPage === numericPageButtons.length;
+  const isNotOnLastPage = currentPage < numericPageButtons.length;
+
+  if (isOnPageOne) hideButton(prevButton);
+  if (isNoLongerOnPageOne) showButton(prevButton);
+  if (isOnTheLastPage) hideButton(nextButton);
+  if (isNotOnLastPage) showButton(nextButton);
 }
 
 function fillContainer(params) {
-  if (
-    allContacts[calculatePageContent(params)[1]] !== undefined &&
-    allContacts[calculatePageContent(params)[0]] !== undefined
-  ) {
+  const contactOneIsNotUndefined =
+    allContacts[calculatePageContent(params)[1]] !== undefined;
+  const contactTwoIsNotUndefined =
+    allContacts[calculatePageContent(params)[0]] !== undefined;
+
+  if (contactOneIsNotUndefined && contactTwoIsNotUndefined) {
     displayContainer.unshift(allContacts[calculatePageContent(params)[1]]);
     displayContainer.unshift(allContacts[calculatePageContent(params)[0]]);
   }
@@ -113,9 +112,11 @@ function changePage(e) {
   prevNextBtnToggle(currentPage);
 }
 
-function changePageBackward() {
-  counter--;
+function prevNextPage(e) {
   clear();
+
+  e.target.textContent === 'Previous' ? counter-- : counter++;
+
   lastKnownCurrentPage.unshift(counter);
 
   fillContainer(lastKnownCurrentPage[0]);
@@ -124,28 +125,11 @@ function changePageBackward() {
   render(container, displayContainer[1]);
 
   prevNextBtnToggle(lastKnownCurrentPage[0]);
-
-  counter > numericPageButtons.length ? (counter = 1) : counter;
-}
-
-function changePageForward() {
-  counter++;
-  clear();
-  lastKnownCurrentPage.unshift(counter);
-
-  fillContainer(lastKnownCurrentPage[0]);
-
-  render(container, displayContainer[0]);
-  render(container, displayContainer[1]);
-
-  prevNextBtnToggle(lastKnownCurrentPage[0]);
-
-  counter > numericPageButtons.length ? (counter = 1) : counter;
 }
 
 numericPageButtons.forEach((page) => {
   page.addEventListener('click', changePage);
 });
 
-prevButton.addEventListener('click', changePageBackward);
-nextButton.addEventListener('click', changePageForward);
+prevButton.addEventListener('click', prevNextPage);
+nextButton.addEventListener('click', prevNextPage);
