@@ -1,9 +1,9 @@
 /*
-* Opanuj JavaScript - Przeprogramowani.pl
-* I. Fundamenty języka JavaScript
-*
-* Ćwiczenie 18 - "Weryfikacja ISBN"
-*/
+ * Opanuj JavaScript - Przeprogramowani.pl
+ * I. Fundamenty języka JavaScript
+ *
+ * Ćwiczenie 18 - "Weryfikacja ISBN"
+ */
 
 /*
 * Wprowadzenie
@@ -25,31 +25,35 @@
 *------------
 * W oparciu o zaprezentowany powyżej algorytm, napisz funkcję sprawdzającą przekazany w formie stringa ISBN. Funkcja powinna obsłużyć ISBN z i bez myślników. 
 *
+https://repl.it/@jaseveen/Weryfikacja-ISBN   !!!!!! <<=== Live Preview
 */
 
 function calculateLuhnWages(digit, index, arr) {
-  if (arr[arr.length-1] === 'X' || arr[arr.length-1] === 'x') arr[arr.length-1] = 10
-  return digit*(arr.length-index)
+  if (arr[arr.length - 1] === 'X' || arr[arr.length - 1] === 'x')
+    arr[arr.length - 1] = 10;
+  return digit * (arr.length - index);
 }
 
 function checkISBN(isbn) {
-  let isISBN = isbn.replace(/-/g, '').split('')
-  isISBN = isISBN.map(calculateLuhnWages).reduce((acc, current) => acc + current)
-  return isISBN%11 === 0
+  let isISBN = isbn.replace(/-/g, '').split('');
+  isISBN = isISBN
+    .map(calculateLuhnWages)
+    .reduce((acc, current) => acc + current);
+  return isISBN % 11 === 0;
 }
-  
-  /* Weryfikacja */
-  
-  function verify(input, goal) {
-    input = Array.isArray(input) ? `[${input.join(', ')}]` : input;
-    if (input == goal) {
-      console.log('Gratulacje!');
-    } else {
-      console.log(`Niestety, oczekiwano - ${goal}, otrzymano - ${input}`);
-    }
+
+/* Weryfikacja */
+
+function verify(input, goal) {
+  input = Array.isArray(input) ? `[${input.join(', ')}]` : input;
+  if (input == goal) {
+    console.log('Gratulacje!');
+  } else {
+    console.log(`Niestety, oczekiwano - ${goal}, otrzymano - ${input}`);
   }
-  
-  verify(checkISBN("85-359-0277-5"), true);
-  verify(checkISBN("8535902775"), true);
-  verify(checkISBN("99921-58-10-3"), false);
-  verify(checkISBN("9992158103"), false);
+}
+
+verify(checkISBN('85-359-0277-5'), true);
+verify(checkISBN('8535902775'), true);
+verify(checkISBN('99921-58-10-3'), false);
+verify(checkISBN('9992158103'), false);

@@ -1,44 +1,47 @@
-* Opanuj JavaScript - Przeprogramowani.pl
-* I. Fundamenty języka JavaScript
-*
-* Ćwiczenie 6 - "W dwóch krokach"
-*/
+/*
+ * Opanuj JavaScript - Przeprogramowani.pl
+ * I. Fundamenty języka JavaScript
+ *
+ * Ćwiczenie 6 - "W dwóch krokach"
+ */
 
 /*
-* Cel zadania
-*------------
-* Zaimplementuj funkcję, która zwróci kolejną funkcję dodającą do przekazywanego
-* parametru zarejestrowany wcześniej przedrostek.
-*
-*
-* Przykład:
-* const greeting = withPrefix('Witaj, ');
-* greeting('Janek'); // => 'Witaj, Janek'
-* greeting('Tomek'); // => 'Witaj, Tomek'
-*
-* const goodbye = withPrefix('Żegnaj, ');
-* goodbye('Janek'); // => 'Żegnaj, Janek'
-* goodbye('Tomek'); // => 'Żegnaj, Tomek'
-*
-* Utworzona funkcja to tzw. funkcja wyższego rzędu.
-*/
+ * Cel zadania
+ *------------
+ * Zaimplementuj funkcję, która zwróci kolejną funkcję dodającą do przekazywanego
+ * parametru zarejestrowany wcześniej przedrostek.
+ *
+ *
+ * Przykład:
+ * const greeting = withPrefix('Witaj, ');
+ * greeting('Janek'); // => 'Witaj, Janek'
+ * greeting('Tomek'); // => 'Witaj, Tomek'
+ *
+ * const goodbye = withPrefix('Żegnaj, ');
+ * goodbye('Janek'); // => 'Żegnaj, Janek'
+ * goodbye('Tomek'); // => 'Żegnaj, Tomek'
+ *
+ * Utworzona funkcja to tzw. funkcja wyższego rzędu.
+ */
 
 /*
 * Punkty dodatkowe
 *-----------------
 * Funkcja powinna weryfikować, czy przekazany parametr jest typu string. Jeśli parametr nie
 * spełnia tego warunku, funkcja powinna rzucić wyjątek.
+
+https://repl.it/@jaseveen/w-dwoch-krokach#index.js     !!!!!! <<=== Live Preview
 */
 
 function withPrefix(prefix) {
   if (typeof prefix !== 'string') {
-    throw new Error('input must be a text')
+    throw new Error('input must be a text');
   }
 
   function greet(name) {
-    return `${prefix}${name}`
+    return `${prefix}${name}`;
   }
-  return greet
+  return greet;
 }
 
 /* Weryfikacja */
@@ -51,11 +54,11 @@ function verify(input, goal) {
   }
 }
 
-const course = withPrefix('I ty Opanujesz JavaScript, ')
+const course = withPrefix('I ty Opanujesz JavaScript, ');
 
 try {
   verify(course('Marta'), 'I ty Opanujesz JavaScript, Marta');
   verify(course('Janek'), 'I ty Opanujesz JavaScript, Janek');
 } catch {
-  console.log('Niestety :(')
+  console.log('Niestety :(');
 }

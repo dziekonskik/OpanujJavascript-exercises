@@ -1,9 +1,9 @@
 /*
-* Opanuj JavaScript - Przeprogramowani.pl
-* I. Fundamenty języka JavaScript
-*
-* Ćwiczenie 4 - "Predykaty"
-*/
+ * Opanuj JavaScript - Przeprogramowani.pl
+ * I. Fundamenty języka JavaScript
+ *
+ * Ćwiczenie 4 - "Predykaty"
+ */
 
 /*
 * Cel zadania
@@ -19,29 +19,44 @@
 * Przykład:
 * applyPredicate([1, 2, 3], element => element > 2) // => [3]
 * applyPredicate(['a', 'b', 'c'], element => ['b', 'c'].includes(element)) // => ['b', 'c']
+
+https://repl.it/@jaseveen/predykaty   !!!!!! <<=== Live Preview
 */
 
 function applyPredicate(elements, predicate) {
-    const truthy = []
-    elements.forEach(el => {
-      if (predicate(el)) {truthy.push(el)}
-    })
-    return truthy
-  }
-  
-  /* Weryfikacja */
-  
-  function verify(input, goal) {
-    const inputAsString = JSON.stringify(input);
-    const goalAsString = JSON.stringify(goal);
-  
-    if (inputAsString === goalAsString) {
-      console.log('Gratulacje!');
-    } else {
-      console.log(`Niestety, oczekiwano - ${goalAsString}, otrzymano - ${inputAsString}`);
+  const truthy = [];
+  elements.forEach((el) => {
+    if (predicate(el)) {
+      truthy.push(el);
     }
+  });
+  return truthy;
+}
+
+/* Weryfikacja */
+
+function verify(input, goal) {
+  const inputAsString = JSON.stringify(input);
+  const goalAsString = JSON.stringify(goal);
+
+  if (inputAsString === goalAsString) {
+    console.log('Gratulacje!');
+  } else {
+    console.log(
+      `Niestety, oczekiwano - ${goalAsString}, otrzymano - ${inputAsString}`
+    );
   }
-  
-  verify(applyPredicate([1, 2, 3], element => element > 2), [3]);
-  verify(applyPredicate(['a', 'b', 'c'], element => ['b', 'c'].includes(element)), ['b', 'c']);
-  verify(applyPredicate(['x', 'y'], element => element === 'z'), []);
+}
+
+verify(
+  applyPredicate([1, 2, 3], (element) => element > 2),
+  [3]
+);
+verify(
+  applyPredicate(['a', 'b', 'c'], (element) => ['b', 'c'].includes(element)),
+  ['b', 'c']
+);
+verify(
+  applyPredicate(['x', 'y'], (element) => element === 'z'),
+  []
+);

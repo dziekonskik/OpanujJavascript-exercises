@@ -1,32 +1,30 @@
 /*
-* Opanuj JavaScript - Przeprogramowani.pl
-* I. Fundamenty języka JavaScript
-*
-* Ćwiczenie 9 - "Fabryka"
-*/
+ * Opanuj JavaScript - Przeprogramowani.pl
+ * I. Fundamenty języka JavaScript
+ *
+ * Ćwiczenie 9 - "Fabryka"
+ */
 
 /*
 * Cel zadania
 *------------
 * Zmodyfikuj funkcję factory w taki sposób, aby zmienna quote była dostępna jako właściwość.
+
+https://repl.it/@jaseveen/Fabryka#index.js    !!!!!! <<=== Live Preview
 */
 
-// function factory() {
-//   const quote = 'Cool!';
-// }
-
 function factory() {
-    return {
-      quote: 'Cool!'
-    };
+  return {
+    quote: 'Cool!',
+  };
+}
+
+verify(factory().quote, 'Cool!');
+
+function verify(input, goal) {
+  if (input === goal) {
+    console.log('Gratulacje!');
+  } else {
+    console.log(`Niestety, oczekiwano - ${goal}, otrzymano - ${input}`);
   }
-  
-  verify(factory().quote, 'Cool!');
-  
-  function verify(input, goal) {
-    if (input === goal) {
-      console.log('Gratulacje!');
-    } else {
-      console.log(`Niestety, oczekiwano - ${goal}, otrzymano - ${input}`);
-    }
-  }
+}

@@ -1,9 +1,9 @@
 /*
-* Opanuj JavaScript - Przeprogramowani.pl
-* I. Fundamenty języka JavaScript
-*
-* Ćwiczenie 17 - "Anagramy"
-*/
+ * Opanuj JavaScript - Przeprogramowani.pl
+ * I. Fundamenty języka JavaScript
+ *
+ * Ćwiczenie 17 - "Anagramy"
+ */
 
 /*
 * Cel zadania
@@ -16,30 +16,45 @@
 * getAnagrams("przeprogramowani", ["orperzpinawomarg", "swag", "graprzewanipromo", "orperzpwaniprom", "siema"]);  => ["orperzpinawomarg",  "graprzewanipromo"]
 * 
 * 
+https://repl.it/@jaseveen/Anagram    !!!!!! <<=== Live Preview
 */
 function getAnagrams(word, possibleAnagrams) {
-  const benchmark = [...word].sort().join('')
-  let anagramCheck = []
-  const result = []
-  anagramCheck = possibleAnagrams.map(word => {
-    if (word.length === benchmark.length && word.split('').sort().join('') === benchmark) {
-      return word
+  const benchmark = [...word].sort().join('');
+  let anagramCheck = [];
+  const result = [];
+  anagramCheck = possibleAnagrams.map((word) => {
+    if (
+      word.length === benchmark.length &&
+      word.split('').sort().join('') === benchmark
+    ) {
+      return word;
     }
-  })
-  anagramCheck.forEach(word => word !== undefined ? result.push(word) : null);
-  return result
+  });
+  anagramCheck.forEach((word) =>
+    word !== undefined ? result.push(word) : null
+  );
+  return result;
 }
-  
-  /* Weryfikacja */
-  
-  function verify(input, goal) {
-    input = Array.isArray(input) ? input.join(', ') : input;
-    if (input == goal) {
-      console.log('Gratulacje!');
-    } else {
-      console.log(`Niestety, oczekiwano - ${goal}, otrzymano - ${input}`);
-    }
+
+/* Weryfikacja */
+
+function verify(input, goal) {
+  input = Array.isArray(input) ? input.join(', ') : input;
+  if (input == goal) {
+    console.log('Gratulacje!');
+  } else {
+    console.log(`Niestety, oczekiwano - ${goal}, otrzymano - ${input}`);
   }
-  
-  verify(getAnagrams("przeprogramowani", ["orperzpinawomarg", "swag", "graprzewanipromo", "orperzpwaniprom", "siema"]), "orperzpinawomarg, graprzewanipromo");
-  verify(getAnagrams("siema", ["hej", "witam", "dzień dobry", "emasi"]), "emasi");
+}
+
+verify(
+  getAnagrams('przeprogramowani', [
+    'orperzpinawomarg',
+    'swag',
+    'graprzewanipromo',
+    'orperzpwaniprom',
+    'siema',
+  ]),
+  'orperzpinawomarg, graprzewanipromo'
+);
+verify(getAnagrams('siema', ['hej', 'witam', 'dzień dobry', 'emasi']), 'emasi');
