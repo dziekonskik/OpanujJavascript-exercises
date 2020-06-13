@@ -24,11 +24,13 @@ https://stackblitz.com/edit/dragndrop1-articles-ig8uss?file=index.js   !!!!!!   
 - I tak jest dość trudno ;)
 */
 const draggables = Array.from(document.querySelectorAll('article.bg-white'));
-const lists = Array.from(document.body.children);
+const main = document.querySelectorAll('main');
 
 draggables.forEach((item) => {
   item.setAttribute('draggable', true);
   item.addEventListener('dragstart', (e) => {
+    const dragElement = e.dataTransfer.setData('my-data', e.target.className);
+    console.log(dragElement);
     item.classList.add('dragging');
   });
   item.addEventListener('dragend', (e) => {
@@ -36,20 +38,18 @@ draggables.forEach((item) => {
   });
 });
 
-lists.forEach((list) => {
-  if (list.tagName === 'DIV') {
-    list.addEventListener('dragover', (e) => {
-      e.preventDefault();
-    });
-    list.addEventListener('dragenter', (e) => {
-      e.preventDefault();
-    });
-    list.addEventListener('dragleave', (e) => {
-      e.preventDefault();
-    });
-    list.addEventListener('drop', (e) => {
-      const dragElement = document.querySelector('.dragging');
-      list.appendChild(dragElement);
-    });
-  }
+main.forEach((list) => {
+  list.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  });
+  list.addEventListener('dragenter', (e) => {
+    e.preventDefault();
+  });
+  list.addEventListener('dragleave', (e) => {
+    e.preventDefault();
+  });
+  list.addEventListener('drop', (e) => {
+    const dragElement = document.querySelector('.dragging');
+    list.appendChild(dragElement);
+  });
 });
