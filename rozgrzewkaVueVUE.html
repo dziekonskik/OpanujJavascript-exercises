@@ -1,0 +1,73 @@
+<!-- 
+    # Przeprogramowani.pl - Opanuj JavaScript
+
+Moduł III. - W świecie frameworków
+
+## Ćwiczenie nr. 8 - Rozgrzewka vue
+
+### Jak zacząć
+
+Kliknij przycisk "Fork" u góry edytora aby skopiować ćwiczenie.
+
+### Cel ćwiczenia
+
+Zadania w Vue zaczniemy od czegoś prostego. 
+Zamień istniejący formularz w komponent <text-editor> i dodaj do niego akcję która po wciśnięciu przycisku save! Wyświetli alert z zawartością pola tekstowego. 
+
+### Zanim zaczniesz
+Zajrzyj do dokumentacji: 
+- Wprowadzenie do Vue: https://vuejs.org/v2/guide/index.html
+- Wprowadzenie do komponentów w Vue: https://vuejs.org/v2/guide/components.html
+
+### Dalsze kroki
+Powodzenia!
+
+https://stackblitz.com/edit/rozgrzewka-vue-xqytiq?file=index.js    !!!!!  <<=== Live Preview
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Trening Vue</title>
+  </head>
+  <body class="h-screen">
+    <div id="app" class="h-screen flex justify-center items-center bg-gray-900">
+      <text-editor></text-editor>
+    </div>
+
+    <script>
+      Vue.component('text-editor', {
+        data() {
+          return {
+            text: '',
+          };
+        },
+        template: `
+          <div class="block">  
+            <textarea v-model="text" name="editor" placeholder="✏️ Start writing..." class="p-5 h-40 w-64 shadow-md rounded-md">{{ text }}</textarea>
+            <div class="text-right">
+              <button @click="alert()" class="block bg-blue-500 font-bold py-2 px-4 rounded text-white button float-right">Save!</button>
+            </div>
+          </div> 
+          `,
+        methods: {
+          alert() {
+            return alert(this.text);
+          },
+        },
+      });
+
+      new Vue({
+        el: '#app',
+      });
+    </script>
+  </body>
+</html>
