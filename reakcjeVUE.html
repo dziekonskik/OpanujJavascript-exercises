@@ -1,0 +1,122 @@
+<!-- # Przeprogramowani.pl - Opanuj JavaScript
+
+Moduł III. - W świecie frameworków
+
+## Ćwiczenie nr. 1 - Reakcje
+
+### Jak zacząć
+
+Kliknij przycisk "Fork" u góry edytora aby skopiować ćwiczenie.
+
+### Cel ćwiczenia
+
+Twoim zadaniem jest naprawienie urządzenia do sprawdzania czasu reakcji astronautów. 
+W tym celu zaimplementuj następujące funkcje:
+
+1) W momencie kiedy lampka zmieni kolor z czerwonego na zielony, a użytkownik kliknie przycisk "Zmiana!", 
+pole tekstowe powinno wyświetlić czas reakcji od zmiany koloru lampki, do momentu kliknięcia w przycisk.
+
+2) W momencie kiedy użytkownik kliknie przycisk RESET, urządzenie zostaje zresetowane, 
+a licznik odlicza losowo wybrany czas z przedziału `3-10s`, testując czas reakcji w kolejnym podejściu.
+
+https://stackblitz.com/edit/reakcje-5txbnh?file=src/index.html    !!!!!!   <<=== Live Preview
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Trening Vue</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="column">
+        <div class="row">
+          <button @click="reset()">RESET</button>
+          <div class="dot" :class="{green: timerEnded}"></div>
+          <button @click.once="chceckReaction()">Zmiana!</button>
+        </div>
+        <p>Czas reakcji: {{reactionTime}}</p>
+      </div>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          timerEnded: false,
+          reactionTime: '0ms',
+          timeStart: 0,
+          timeStop: 0,
+        },
+        methods: {
+          setTimer(timeLeft) {
+            setTimeout(() => {
+              this.timeStart = performance.now();
+              this.timerEnded = true;
+            }, timeLeft);
+          },
+          chceckReaction() {
+            if (this.timerEnded !== false) {
+              this.timeStop = performance.now();
+              this.reactionTime = `${parseInt(
+                this.timeStop - this.timeStart
+              )}ms`;
+            }
+          },
+          reset() {
+            this.reactionTime = '0ms';
+            this.timerEnded = false;
+            this.setTimer(5000);
+          },
+        },
+        mounted() {
+          this.setTimer(5000);
+        },
+      });
+    </script>
+
+    <style>
+      .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      button {
+        background: #454f86;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 20px;
+      }
+
+      button:hover {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .dot {
+        width: 50px;
+        height: 50px;
+        background: red;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 20px;
+      }
+
+      .dot.green {
+        background: green;
+      }
+    </style>
+  </body>
+</html>
