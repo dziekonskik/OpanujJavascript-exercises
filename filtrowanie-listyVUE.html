@@ -96,6 +96,10 @@ https://stackblitz.com/edit/filtrowanie-q86j66?file=index.html   !!!!!  <<=== Li
                 this.activeName = false;
                 this.wasClicked = false;
               }
+              if (this.filterMember().length === 0) {
+                this.activeName = false;
+                return;
+              }
               return this.filterMember()[0].first_name === member.first_name
                 ? (this.activeName = member)
                 : null;
@@ -103,6 +107,7 @@ https://stackblitz.com/edit/filtrowanie-q86j66?file=index.html   !!!!!  <<=== Li
           },
           greetMember() {
             this.wasClicked = true;
+            if (this.activeName.first_name === undefined) return;
             return `cześć ${this.activeName.first_name}`;
           },
         },
